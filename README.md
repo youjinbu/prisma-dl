@@ -17,7 +17,7 @@ Cheat postinstall and download binaries whenever you want.
 {
   "pnpm": {
     "overrides": {
-      "@prisma/engines": "prisma-dl"
+      "@prisma/engines": "npm:prisma-dl@latest"
     }
   }
 }
@@ -39,7 +39,7 @@ Cheat postinstall and download binaries whenever you want.
 > pnpm prisma-dl --engine fmt
 ```
 
-prisma-dl --help
+> prisma-dl --help
 
 ```
 
@@ -67,7 +67,8 @@ Options
 ## TODO
 
 - [ ] Find a way to skip the `node_modules/prisma/engiens/[hash]/[binaryType]-engine-[platform]` copy
-- [ ] TypeScript // not really necessary ?
+- [ ] TypeScript // not really necessary?
+- [ ] Tests
 
 ## License
 

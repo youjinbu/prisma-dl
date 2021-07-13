@@ -1,6 +1,13 @@
 {
   "name": "prisma-dl",
-  "version": "0.0.1-dev.0",
+  "version": "0.0.1-dev.1",
+  "description": "prisma binary downloader",
+  "keywords": [
+    "prisma"
+  ],
+  "license": "MIT",
+  "repository": "github:youjinbu/prisma-dl",
+  "homepage": "https://github.com/youjinbu/prisma-dl#readme",
   "bin": {
     "prisma-dl": "./bin/dl.js"
   },

@@ -1,15 +1,32 @@
-# Prisma Binary Downloader (WIP)
+# prisma-dl (WIP)
 
-Cheat postinstall and download binaries whenever you want.
+Prisma Binary Downloader
 
+**NO** more automatic downloads of huge binaries.
+
+[examples](/examples)
 
 ## Usage
 
+### Install Prisma
 
-### 1. Cheat the postinstall
+> https://www.prisma.io/docs/getting-started
 
+### Cheat the postinstall
 
-> [pnpm|yarn] add -D prisma-dl
+#### prepare
+
+- install
+```
+$ pnpm add -D prisma-dl
+# or
+$ yarn add -D prisma-dl
+```
+
+- env
+```
+PRISMA_BINARIES_PATH=./binaries
+```
 
 #### pnpm
 
@@ -33,7 +50,7 @@ Cheat postinstall and download binaries whenever you want.
 }
 ```
 
-### 2. Download binaries
+### Download binaries
 
 ```
 > pnpm prisma-dl --engine fmt
@@ -66,8 +83,8 @@ Options
 
 ## TODO
 
-- [ ] Find a way to skip the `node_modules/prisma/engiens/[hash]/[binaryType]-engine-[platform]` copy
-- [ ] TypeScript // not really necessary?
+- [ ] Find a way to skip the `node_modules/prisma/engiens/[hash]/query-engine-darwin` copy
+- [ ] Examples
 - [ ] Tests
 
 ## License

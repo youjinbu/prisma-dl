@@ -27,7 +27,7 @@ function fetchBinary({url, out: outGz}: FetchBinaryOptions) {
   fs.mkdirSync(outGz.split('/').slice(0, -1).join('/'), {recursive: true})
 
   const out = outGz.slice(0, -3) // trim `.gz`
-  run('wget', [url, '-O', outGz])
+  run('wget', [url, '-O', outGz, '--quiet'])
   run('rm', ['-rf', out])
   run('gzip', ['-d', outGz])
   run('chmod', ['+x', out])

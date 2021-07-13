@@ -1,0 +1,22 @@
+{
+  "name": "prisma-dl",
+  "version": "0.0.1-dev.0",
+  "bin": {
+    "prisma-dl": "./bin/dl.js"
+  },
+  "files": [
+    "index.js",
+    "bin/dl.js"
+  ],
+  "engines": {
+    "node": ">=14.16.0"
+  },
+  "scripts": {
+    "prepare": "pnpm build",
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "@prisma/get-platform": "2.27.0-dev.25",
+    "esbuild": "0.12.15"
+  }
+}

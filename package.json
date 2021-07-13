@@ -20,10 +20,20 @@
   },
   "scripts": {
     "prepare": "pnpm build",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "tscheck": "tsc",
+    "lint": "eslint . --ext .ts,.js && pnpm tscheck"
   },
   "devDependencies": {
     "@prisma/get-platform": "2.27.0-dev.25",
-    "esbuild": "0.12.15"
-  }
+    "@types/node": "16.3.1",
+    "@youjinbu/eslint-config": "0.7.0",
+    "@youjinbu/prettier-config": "0.0.1",
+    "@youjinbu/tsconfig": "0.0.3",
+    "esbuild": "0.12.15",
+    "eslint": "7.30.0",
+    "prettier": "2.3.2",
+    "typescript": "4.3.5"
+  },
+  "prettier": "@youjinbu/prettier-config"
 }

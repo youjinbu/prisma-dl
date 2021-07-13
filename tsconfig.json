@@ -1,0 +1,4 @@
+{
+  "extends": "@youjinbu/tsconfig/node",
+  "include": ["src", "scripts", "index.js", ".eslintrc.js"]
+}

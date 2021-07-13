@@ -1,20 +1,28 @@
-const fs = require('fs')
-const {join} = require('path')
-const assert = require('assert')
-const {spawnSync} = require('child_process')
-const {platforms, getPlatform} = require('@prisma/get-platform')
-const {genArg} = require('./arg')
+import type {Platform} from '@prisma/get-platform'
 
-const baseUrl = process.env.PRISMA_BINARIES_MIRROR || 'https://binaries.prisma.sh'
-function binaryUrl(hash, platform, binaryType) {
+import fs from 'fs'
+import {join, resolve} from 'path'
+import assert from 'assert'
+import {spawnSync} from 'child_process'
+import {platforms, getPlatform} from '@prisma/get-platform'
+import {genArg} from './arg'
+
+const baseUrl =
+  process.env.PRISMA_BINARIES_MIRROR || 'https://binaries.prisma.sh'
+function binaryUrl(hash: string, platform: string, binaryType: string) {
   return `${baseUrl}/master/${hash}/${platform}/${binaryType}.gz`
 }
 
-function run(command, options) {
+function run(command: string, options: string[]) {
   spawnSync(command, options, {stdio: 'inherit'})
 }
 
-function fetchBinary({url, out: outGz}) {
+interface FetchBinaryOptions {
+  url: string
+  out: string
+}
+
+function fetchBinary({url, out: outGz}: FetchBinaryOptions) {
   // prepare
   fs.mkdirSync(outGz.split('/').slice(0, -1).join('/'), {recursive: true})
 
@@ -25,11 +33,21 @@ function fetchBinary({url, out: outGz}) {
   run('chmod', ['+x', out])
 }
 
-function getOptions({projectDir, binariesDir, platform, binaryType}) {
-  const out = join(process.cwd(), binariesDir, `${binaryType}-${platform}.gz`)
+interface Options {
+  binariesDir: string
+  binaryType: string
+  platform: Platform
+  projectDir: string
+}
 
-  // prettier-ignore
-  const packageJson = join(require.resolve('@prisma/client'), '..', 'package.json')
+function getFetchOptions(opts: Options): FetchBinaryOptions {
+  const {binariesDir, binaryType, platform, projectDir} = opts
+  const out = join(resolve(binariesDir), `${binaryType}-${platform}.gz`)
+
+  const prismaClientPath = require.resolve('@prisma/client', {
+    paths: [projectDir],
+  })
+  const packageJson = join(prismaClientPath, '..', 'package.json')
   const version = require(packageJson).dependencies['@prisma/engines-version']
 
   // e.g. @prisma/engines-version: 2.27.0-43.cdba6ec525e0213cce26f8e4bb23cf556d1479bb
@@ -41,7 +59,7 @@ function getOptions({projectDir, binariesDir, platform, binaryType}) {
 const knownPlatforms = ['native', ...platforms]
 const engines = ['query', 'fmt', 'migration', 'introspection']
 
-async function download(argv) {
+export async function download(argv: string[]) {
   const arg = genArg(argv)
   const project = arg('project') || '.'
   const out = arg('out') || join(project, 'binaries')
@@ -73,7 +91,7 @@ Options
     return
   }
 
-  let platform = arg('platform') || 'native'
+  let platform: Platform = arg<Platform>('platform') || 'native'
   if (platform === 'native') {
     platform = await getPlatform()
   }
@@ -85,7 +103,7 @@ Options
   assert(engines.includes(type), 'supported engine:\n' + engines.join('\n'))
   assert(project, '--project is required')
 
-  const options = getOptions({
+  const options = getFetchOptions({
     binariesDir: out,
     binaryType: type === 'fmt' ? 'prisma-fmt' : `${type}-engine`,
     platform,
@@ -98,5 +116,3 @@ Options
     fetchBinary(options)
   }
 }
-
-exports.download = download

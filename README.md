@@ -1,34 +1,21 @@
-# prisma-dl (WIP)
+[![npm version](https://badge.fury.io/js/prisma-dl.svg)](https://www.npmjs.com/package/prisma-dl)
+![CI](https://github.com/youjinbu/prisma-dl/workflows/ci/badge.svg)
+[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg?maxAge=2592000)]()
 
-Prisma Binary Downloader
+**Prisma Binary Downloader** [WIP]
 
-**NO** more automatic downloads of huge binaries.
-
-[examples](/examples)
+**NO** more automatic downloads of huge binaries. ([examples](/examples))
 
 ## Usage
 
-### Install Prisma
+> Make sure wget chmod gzip are installed.
 
-> https://www.prisma.io/docs/getting-started
+### Overrides/Resolutions
 
-### Cheat the postinstall
+for cheating the postinstall in prisma, we need to override `@prisma/engines` package to `prisma-dl` via package manager like pnpm or yarn.
 
-#### prepare
-
-- install
-```
-$ pnpm add -D prisma-dl
-# or
-$ yarn add -D prisma-dl
-```
-
-- env
-```
-PRISMA_BINARIES_PATH=./binaries
-```
-
-#### pnpm
+<details>
+  <summary>pnpm</summary>
 
 ```json
 {
@@ -39,8 +26,10 @@ PRISMA_BINARIES_PATH=./binaries
   }
 }
 ```
+</details>
 
-#### yarn
+<details>
+  <summary>yarn</summary>
 
 ```json
 {
@@ -49,17 +38,29 @@ PRISMA_BINARIES_PATH=./binaries
   }
 }
 ```
+</details>
+
+### Installation
+
+- https://www.prisma.io/docs/getting-started
+- `prisma-dl` needs `@prisma/client` to detect binaries version
+- `[package manager] add @prisma/client`
+- `[package manager] add -D prisma-dl prisma`
+
 
 ### Download binaries
 
-```
-> pnpm prisma-dl --engine fmt
-```
-
-> prisma-dl --help
+With this package installed, we will need to download the appropriate binary manually:
 
 ```
+$ pnpm prisma-dl --engine query
+$ pnpm prisma-dl --engine fmt
+```
 
+<details>
+<summary>prisma-dl --help</summary>
+
+```
 Usage
 
   $ prisma-dl  [options]
@@ -78,8 +79,8 @@ Options
       --print  Print fetch options without downloading binary
         --out  Output dir
                Defaults to [project root]/binaries
-
 ```
+</details>
 
 ## TODO
 

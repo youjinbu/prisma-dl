@@ -1,7 +1,10 @@
 const path = require('path')
 
 function getEnginesPath() {
-  return path.join(process.cwd(), process.env.PRISMA_BINARIES_PATH)
+  return path.join(
+    process.cwd(),
+    process.env.PRISMA_BINARIES_PATH || 'binaries'
+  )
 }
 
 function passThrough() {}

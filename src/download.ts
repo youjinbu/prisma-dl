@@ -31,6 +31,10 @@ function fetchBinary({url, out: outGz}: FetchBinaryOptions) {
   run('rm', ['-rf', out])
   run('gzip', ['-d', outGz])
   run('chmod', ['+x', out])
+
+  if (!process.env.CI) {
+    console.log(out)
+  }
 }
 
 interface Options {

@@ -34,7 +34,7 @@ for cheating the postinstall in prisma, we need to override `@prisma/engines` pa
 ```json
 {
   "resolutions": {
-    "@prisma/engines": "prisma-dl tgz url"
+    "@prisma/engines": "https//registry.npmjs.org/prisma-dl/-/prisma-dl-__LATEST_VERSION__.tgz"
   }
 }
 ```
@@ -42,10 +42,8 @@ for cheating the postinstall in prisma, we need to override `@prisma/engines` pa
 
 ### Installation
 
-- https://www.prisma.io/docs/getting-started
-- `prisma-dl` needs `@prisma/client` to detect binaries version
-- `[package manager] add @prisma/client`
 - `[package manager] add -D prisma-dl prisma`
+- `[package manager] add @prisma/client`
 
 
 ### Download binaries
@@ -82,10 +80,14 @@ Options
 ```
 </details>
 
+## Requirements
+
+- `pnpm` or `yarn`
+- Node >= 14.16.0 :P
+
 ## TODO
 
 - [ ] Find a way to skip the `node_modules/prisma/engiens/[hash]/query-engine-darwin` copy
-- [ ] Examples
 - [ ] Tests
 
 ## License

@@ -1,15 +1,15 @@
 {
   "private": true,
-  "pnpm": {
-    "overrides": {
-      "@prisma/engines": "../../"
-    }
+  "dependencies": {
+    "@prisma/client": "2.27.0"
   },
   "devDependencies": {
     "prisma": "2.27.0",
     "prisma-dl": "link:../../"
   },
-  "dependencies": {
-    "@prisma/client": "2.27.0"
+  "pnpm": {
+    "overrides": {
+      "@prisma/engines": "../../"
+    }
   }
 }

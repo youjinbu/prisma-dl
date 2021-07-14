@@ -13,4 +13,9 @@ fetch whatever engine you like.
 
 ```
 $ pnpm prisma-dl --engine fmt
+$ pnpm prisma-dl --engine query
+```
+
+```
+$ pnpm prisma generate
 ```

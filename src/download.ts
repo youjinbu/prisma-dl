@@ -76,11 +76,6 @@ const knownPlatforms = ['native', ...platforms]
 const engines = ['query', 'fmt', 'migration', 'introspection']
 
 export async function download(argv: string[]) {
-  const arg = genArg(argv)
-  const project = arg('project') || '.'
-  const out = arg('out') || join(project, 'binaries')
-  const type = arg('engine') || 'query'
-
   if (argv.includes('-h') || argv.includes('--help')) {
     console.log(`
 Simple prisma binary downloader dependent on wget,rm,gzip,chmod
@@ -107,7 +102,12 @@ Options
     return
   }
 
+  const arg = genArg(argv)
+  const project = arg('project') || '.'
+  const outDir = arg('out') || join(project, 'binaries')
+  const type = arg('engine') || 'query'
   let platform: Platform = arg<Platform>('platform') || 'native'
+
   if (platform === 'native') {
     platform = await getPlatform()
   }
@@ -120,7 +120,7 @@ Options
   assert(project, '--project is required')
 
   const options = getFetchOptions({
-    binariesDir: out,
+    binariesDir: outDir,
     binaryType: type === 'fmt' ? 'prisma-fmt' : `${type}-engine`,
     platform,
     projectDir: project,

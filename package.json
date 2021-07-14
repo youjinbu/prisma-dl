@@ -22,7 +22,7 @@
     "prepare": "pnpm build",
     "build": "node scripts/build.js",
     "tscheck": "tsc",
-    "lint": "eslint . --ext .ts,.js && pnpm tscheck"
+    "lint": "eslint . --ext .ts,.js --ignore-path .gitignore && pnpm tscheck"
   },
   "devDependencies": {
     "@prisma/get-platform": "2.27.0-dev.25",

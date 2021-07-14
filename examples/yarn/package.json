@@ -5,9 +5,9 @@
   },
   "devDependencies": {
     "prisma": "2.27.0",
-    "prisma-dl": "0.0.1-dev.2"
+    "prisma-dl": "0.0.1"
   },
   "resolutions": {
-    "@prisma/engines": "https://registry.npmjs.org/prisma-dl/-/prisma-dl-0.0.1-dev.2.tgz"
+    "@prisma/engines": "https://registry.npmjs.org/prisma-dl/-/prisma-dl-0.0.1.tgz"
   }
 }

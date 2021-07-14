@@ -1,7 +1,7 @@
 import type {Platform} from '@prisma/get-platform'
 
 import fs from 'fs'
-import {join, resolve} from 'path'
+import {join, resolve, dirname} from 'path'
 import assert from 'assert'
 import {execSync, spawnSync} from 'child_process'
 import {platforms, getPlatform} from '@prisma/get-platform'
@@ -26,7 +26,7 @@ interface FetchBinaryOptions {
 
 function fetchBinary({url, out: outGz}: FetchBinaryOptions) {
   // prepare
-  fs.mkdirSync(outGz.split('/').slice(0, -1).join('/'), {recursive: true})
+  fs.mkdirSync(dirname(outGz), {recursive: true})
 
   const out = outGz.slice(0, -3) // trim `.gz`
   run('wget', [url, '-O', outGz, '--quiet'])
@@ -131,8 +131,9 @@ Options
     return
   }
 
-  if (getVersion(options.out.slice(0, -3)) === options.v) {
-    console.log(options.out)
+  const outBin = options.out.slice(0, -3)
+  if (getVersion(outBin) === options.v) {
+    console.log(outBin)
     return
   }
 

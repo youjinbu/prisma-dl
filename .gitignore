@@ -5,3 +5,5 @@ node_modules
 bin
 binaries
 generated
+examples/yarn/yarn.lock
+examples/pnpm/pnpm-lock.yaml

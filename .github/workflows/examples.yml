@@ -1,0 +1,57 @@
+name: examples
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache .pnpm-store
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node14-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.x
+          run_install: |
+            - args: [--reporter=silent]
+
+      - name: Build
+        run: pnpm build
+
+  pnpm:
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: pnpm
+        working-directory: ./examples/pnpm
+        run: |
+          pnpm i
+          pnpm prisma-dl --help
+          pnpm prisma-dl --engine fmt
+          pnpm prisma format
+          pnpm prisma-dl --engine query
+          pnpm prisma generate
+
+  yarn:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: yarn
+        working-directory: ./examples/yarn
+        run: |
+          yarn
+          yarn prisma-dl --help
+          yarn prisma-dl --engine fmt
+          yarn prisma format
+          yarn prisma-dl --engine query
+          yarn prisma generate

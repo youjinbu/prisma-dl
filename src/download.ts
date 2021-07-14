@@ -3,12 +3,13 @@ import type {Platform} from '@prisma/get-platform'
 import fs from 'fs'
 import {join, resolve} from 'path'
 import assert from 'assert'
-import {spawnSync} from 'child_process'
+import {execSync, spawnSync} from 'child_process'
 import {platforms, getPlatform} from '@prisma/get-platform'
 import {genArg} from './arg'
 
 const baseUrl =
   process.env.PRISMA_BINARIES_MIRROR || 'https://binaries.prisma.sh'
+
 function binaryUrl(hash: string, platform: string, binaryType: string) {
   return `${baseUrl}/master/${hash}/${platform}/${binaryType}.gz`
 }
@@ -20,6 +21,7 @@ function run(command: string, options: string[]) {
 interface FetchBinaryOptions {
   url: string
   out: string
+  v: string
 }
 
 function fetchBinary({url, out: outGz}: FetchBinaryOptions) {
@@ -57,7 +59,17 @@ function getFetchOptions(opts: Options): FetchBinaryOptions {
   // e.g. @prisma/engines-version: 2.27.0-43.cdba6ec525e0213cce26f8e4bb23cf556d1479bb
   const hash = version.split('.').pop()
 
-  return {url: binaryUrl(hash, platform, binaryType), out}
+  return {url: binaryUrl(hash, platform, binaryType), out, v: hash}
+}
+
+function getVersion(file: string) {
+  if (!fs.existsSync(file)) return null
+
+  try {
+    return execSync(`${file} -V`).toString().trim().split(' ').pop()
+  } catch {
+    return null
+  }
 }
 
 const knownPlatforms = ['native', ...platforms]
@@ -116,7 +128,13 @@ Options
 
   if (argv.includes('--print')) {
     console.table(options)
-  } else {
-    fetchBinary(options)
+    return
   }
+
+  if (getVersion(options.out.slice(0, -3)) === options.v) {
+    console.log(options.out)
+    return
+  }
+
+  fetchBinary(options)
 }

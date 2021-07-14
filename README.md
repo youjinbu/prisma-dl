@@ -90,4 +90,4 @@ Options
 
 ## License
 
-MIT
+MIT (not sure, correct me)

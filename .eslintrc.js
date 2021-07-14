@@ -5,4 +5,9 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   ignorePatterns: ['node_modules', 'bin'],
+  settings: {
+    react: {
+      version: '999.999.999',
+    },
+  },
 }

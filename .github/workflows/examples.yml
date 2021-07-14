@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  setup:
+  pnpm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,31 +27,26 @@ jobs:
       - name: Build
         run: pnpm build
 
-  pnpm:
-    needs: setup
-    runs-on: ubuntu-latest
-
-    steps:
       - name: pnpm
         working-directory: ./examples/pnpm
         run: |
           pnpm i
           pnpm prisma-dl --help
-          pnpm prisma-dl --engine fmt
-          pnpm prisma format
           pnpm prisma-dl --engine query
           pnpm prisma generate
+          pnpm prisma-dl --engine fmt
+          pnpm prisma format
 
   yarn:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: yarn
         working-directory: ./examples/yarn
         run: |
           yarn
           yarn prisma-dl --help
-          yarn prisma-dl --engine fmt
-          yarn prisma format
           yarn prisma-dl --engine query
           yarn prisma generate
+          yarn prisma-dl --engine fmt
+          yarn prisma format

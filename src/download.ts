@@ -24,18 +24,20 @@ interface FetchBinaryOptions {
   v: string
 }
 
-function fetchBinary({url, out: outGz}: FetchBinaryOptions) {
-  // prepare
-  fs.mkdirSync(dirname(outGz), {recursive: true})
+async function fetchBinary({url, out: outGz}: FetchBinaryOptions) {
+  const binaryPath = outGz.slice(0, -3) // trim `.gz`
 
-  const out = outGz.slice(0, -3) // trim `.gz`
+  // prepare
+  await fs.promises.mkdir(dirname(outGz), {recursive: true})
+  await fs.promises.rm(binaryPath, {force: true})
+
   run('wget', [url, '-O', outGz, '--quiet'])
-  run('rm', ['-rf', out])
   run('gzip', ['-d', outGz])
-  run('chmod', ['+x', out])
+
+  await fs.promises.chmod(binaryPath, 0o755)
 
   if (!process.env.CI) {
-    console.log(out)
+    console.log(binaryPath)
   }
 }
 
@@ -137,5 +139,5 @@ Options
     return
   }
 
-  fetchBinary(options)
+  await fetchBinary(options)
 }

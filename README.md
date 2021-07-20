@@ -8,7 +8,7 @@
 
 ## Usage
 
-> Make sure wget chmod gzip are installed.
+> Make sure wget and gzip are installed.
 
 ### Overrides/Resolutions
 

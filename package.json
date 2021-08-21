@@ -25,7 +25,7 @@
     "lint": "eslint . --ext .ts,.js --ignore-path .gitignore && pnpm tscheck"
   },
   "devDependencies": {
-    "@prisma/get-platform": "2.27.0-integration-tests-remove-force-exit.2",
+    "@prisma/get-platform": "2.30.0-25.63c2434b7181635adf1bc2296f7208eea6cd8211",
     "@types/node": "16.3.1",
     "@youjinbu/eslint-config": "0.7.0",
     "@youjinbu/prettier-config": "0.0.1",

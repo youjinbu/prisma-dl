@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@prisma/get-platform': 2.27.0-integration-tests-remove-force-exit.2
+  '@prisma/get-platform': 2.30.0-25.63c2434b7181635adf1bc2296f7208eea6cd8211
   '@types/node': 16.3.1
   '@youjinbu/eslint-config': 0.7.0
   '@youjinbu/prettier-config': 0.0.1
@@ -12,7 +12,7 @@ specifiers:
   typescript: 4.3.5
 
 devDependencies:
-  '@prisma/get-platform': 2.27.0-integration-tests-remove-force-exit.2
+  '@prisma/get-platform': 2.30.0-25.63c2434b7181635adf1bc2296f7208eea6cd8211
   '@types/node': 16.3.1
   '@youjinbu/eslint-config': 0.7.0_aff669e8eb0d21fc4e2068e6112ef4d0
   '@youjinbu/prettier-config': 0.0.1_prettier@2.3.2
@@ -310,25 +310,36 @@ packages:
       fastq: 1.11.1
     dev: true
 
-  /@prisma/debug/2.27.0-integration-tests-remove-force-exit.2:
-    resolution: {integrity: sha512-zlJErsv08AU2AuHg16b+JGF7v1cI3/vEtmGJ7ij8BQi2RqwvvN1ixM+VnWpJpPOyRltXQQCT6mlsejdqN0FqWw==}
+  /@prisma/debug/2.29.1:
+    resolution: {integrity: sha512-8OAh4ozVCvlcZU1HaP7QTWIA6Aqzs98nYgTYrxjDLqXJcytIvpIjHxfgqKhuPQ8MTkUm9cI5TJGswwcjJt0/0g==}
     dependencies:
+      '@types/debug': 4.1.7
       debug: 4.3.2
       ms: 2.1.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@prisma/get-platform/2.27.0-integration-tests-remove-force-exit.2:
-    resolution: {integrity: sha512-9teL9EfH/CooGaIPXhbRsB+zGhNaBhmC5Q6L96uJNUjKcNqnzQ0xSXK6Zp/XAPo95YmRqxYBajwnw2yGTkjQ8w==}
+  /@prisma/get-platform/2.30.0-25.63c2434b7181635adf1bc2296f7208eea6cd8211:
+    resolution: {integrity: sha512-nEfNjvcVBnkhSM6bntW0ggLSJnBW0AyklRnAkWL0AhyORPmbPAji+RDDkiRZJrCq44MHreg7y42eO0MJ+RMjtg==}
     dependencies:
-      '@prisma/debug': 2.27.0-integration-tests-remove-force-exit.2
+      '@prisma/debug': 2.29.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
+  /@types/debug/4.1.7:
+    resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
+    dependencies:
+      '@types/ms': 0.7.31
+    dev: true
+
   /@types/json-schema/7.0.8:
     resolution: {integrity: sha512-YSBPTLTVm2e2OoQIDYx8HaeWJ5tTToLH67kXR7zYNGupXMEHa2++G8k+DczX2cFVgalypqtyZIcU19AFcmOpmg==}
+    dev: true
+
+  /@types/ms/0.7.31:
+    resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
   /@types/node/16.3.1:

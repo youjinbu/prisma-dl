@@ -25,15 +25,15 @@
     "lint": "eslint . --ext .ts,.js --ignore-path .gitignore && pnpm tscheck"
   },
   "devDependencies": {
-    "@prisma/get-platform": "2.30.0-25.63c2434b7181635adf1bc2296f7208eea6cd8211",
+    "@prisma/get-platform": "2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb",
     "@types/node": "16.3.1",
     "@youjinbu/eslint-config": "0.7.0",
     "@youjinbu/prettier-config": "0.0.1",
     "@youjinbu/tsconfig": "0.0.3",
-    "esbuild": "0.12.22",
+    "esbuild": "0.12.24",
     "eslint": "7.32.0",
     "prettier": "2.3.2",
-    "typescript": "4.3.5"
+    "typescript": "4.4.2"
   },
   "prettier": "@youjinbu/prettier-config"
 }

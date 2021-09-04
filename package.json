@@ -27,10 +27,10 @@
   "devDependencies": {
     "@prisma/get-platform": "2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb",
     "@types/node": "16.3.1",
-    "@youjinbu/eslint-config": "0.7.0",
+    "@youjinbu/eslint-config": "0.8.0",
     "@youjinbu/prettier-config": "0.0.1",
     "@youjinbu/tsconfig": "0.0.3",
-    "esbuild": "0.12.24",
+    "esbuild": "0.12.25",
     "eslint": "7.32.0",
     "prettier": "2.3.2",
     "typescript": "4.4.2"

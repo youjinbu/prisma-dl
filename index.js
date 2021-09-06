@@ -7,8 +7,14 @@ function getEnginesPath() {
   )
 }
 
+// TODO: support libquery-engine
+function getCliQueryEngineBinaryType() {
+  return 'query-engine'
+}
+
 function passThrough() {}
 
 exports.download = passThrough
 exports.ensureBinariesExist = passThrough
 exports.getEnginesPath = getEnginesPath
+exports.getCliQueryEngineBinaryType = getCliQueryEngineBinaryType

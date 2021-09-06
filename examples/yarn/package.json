@@ -1,13 +1,13 @@
 {
   "private": true,
   "dependencies": {
-    "@prisma/client": "2.27.0"
+    "@prisma/client": "2.30.3"
   },
   "devDependencies": {
-    "prisma": "2.27.0",
-    "prisma-dl": "0.0.1"
+    "prisma": "2.30.3",
+    "prisma-dl": "0.1.1"
   },
   "resolutions": {
-    "@prisma/engines": "https://registry.npmjs.org/prisma-dl/-/prisma-dl-0.0.1.tgz"
+    "@prisma/engines": "https://registry.npmjs.org/prisma-dl/-/prisma-dl-0.1.1.tgz"
   }
 }

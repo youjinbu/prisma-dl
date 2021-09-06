@@ -87,6 +87,7 @@ Options
 
 ## TODO
 
+- [ ] libquery-engine
 - [ ] Find a way to skip the `node_modules/prisma/engiens/[hash]/query-engine-darwin` copy
 - [ ] Tests
 

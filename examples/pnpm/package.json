@@ -1,10 +1,10 @@
 {
   "private": true,
   "dependencies": {
-    "@prisma/client": "2.27.0"
+    "@prisma/client": "2.30.3"
   },
   "devDependencies": {
-    "prisma": "2.27.0",
+    "prisma": "2.30.3",
     "prisma-dl": "link:../../"
   },
   "pnpm": {

@@ -11,7 +11,7 @@ const baseUrl =
   process.env.PRISMA_BINARIES_MIRROR || 'https://binaries.prisma.sh'
 
 function binaryUrl(hash: string, platform: string, binaryType: string) {
-  return `${baseUrl}/master/${hash}/${platform}/${binaryType}.gz`
+  return `${baseUrl}/all_commits/${hash}/${platform}/${binaryType}.gz`
 }
 
 function run(command: string, options: string[]) {

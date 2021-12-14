@@ -30,10 +30,10 @@
     "@youjinbu/eslint-config": "0.9.1",
     "@youjinbu/prettier-config": "0.0.1",
     "@youjinbu/tsconfig": "0.0.3",
-    "esbuild": "0.14.1",
-    "eslint": "8.3.0",
-    "prettier": "2.5.0",
-    "typescript": "4.5.2"
+    "esbuild": "0.14.5",
+    "eslint": "8.4.1",
+    "prettier": "2.5.1",
+    "typescript": "4.5.4"
   },
   "prettier": "@youjinbu/prettier-config"
 }

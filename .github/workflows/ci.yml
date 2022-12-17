@@ -25,7 +25,7 @@ jobs:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-node14-${{ hashFiles('pnpm-lock.yaml') }}
 
-      - uses: pnpm/action-setup@v2.2.2
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7.x
           run_install: |

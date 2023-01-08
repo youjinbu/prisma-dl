@@ -25,7 +25,7 @@
     "lint": "eslint . --ext .ts,.js --ignore-path .gitignore && pnpm tscheck"
   },
   "devDependencies": {
-    "@prisma/get-platform": "2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb",
+    "@prisma/get-platform": "4.8.1",
     "@types/node": "16.3.1",
     "@youjinbu/eslint-config": "0.10.0",
     "@youjinbu/prettier-config": "0.0.1",
